@@ -2,6 +2,9 @@ SWIG = swig
 SWIG_OPTS = -c++ -python
 CC = g++ 
 OPTS = -fPIC -O3 -funroll-loops -msse3 -fopenmp 
+PYTHON ?= python
+PYTHON_INCLUDE_DIR = $(shell $(PYTHON) -c 'from distutils.sysconfig import get_python_inc; print(get_python_inc())')
+PYTHON_CFLAGS = -I$(PYTHON_INCLUDE_DIR)
 
 all: swig link
 
@@ -9,7 +12,7 @@ swig: semi_analyticalwrap.i
 	$(SWIG) $(SWIG_OPTS) $?
 
 link:  
-	$(CC) $(OPTS) -c semi_analyticalwrap.cpp semi_analyticalwrap_wrap.cxx -I/usr/include/python2.6 -I/usr/lib/python2.6
+	$(CC) $(OPTS) -c semi_analyticalwrap.cpp semi_analyticalwrap_wrap.cxx $(PYTHON_CFLAGS)
 	$(CC) $(OPTS) -shared $? -o _semi_analyticalwrap.so semi_analyticalwrap.o semi_analyticalwrap_wrap.o
 
 clean:
