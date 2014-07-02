@@ -72,7 +72,7 @@ def gmres_solver (surf_array, field_array, X, b, param, ind0, timing, kernel):
     time_lu = 0.
     time_update = 0.
 
-    # Initializing varibles
+    # Initializing variables
     rel_resid = 1.
     cs, sn = zeros(N), zeros(N)
 

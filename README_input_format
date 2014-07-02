@@ -38,7 +38,7 @@ Parameters:
 - charge_file:  location of the '.pqr' file with the location of the charges
 
 - Nparent:      Number of 'parent' surfaces (surface containing this region)
-                Of course, this is either 1 of 0 (if it corresponds to the infinite region)
+                Of course, this is either 1 or 0 (if it corresponds to the infinite region)
 
 - parent:       file of the parent surface mesh, according to their position in the FILE list,
                 starting from 0 (eg. if the mesh file for the parent is the third one specified 
